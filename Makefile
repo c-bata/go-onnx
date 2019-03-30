@@ -3,11 +3,16 @@
 PKGS := $(shell go list ./...)
 SOURCES := $(shell find . -prune -o -name "*.go" -not -name '*_test.go' -print)
 
-.PHONY: setup
-setup:  ## Setup for required tools.
+.PHONY: dependency
+dependency:  ## Setup for dependencies.
 	go get -u golang.org/x/lint/golint
 	go get -u golang.org/x/tools/cmd/goimports
-	go get -u golang.org/x/tools/cmd/stringer
+	go get -u github.com/golang/protobuf/protoc-gen-go
+
+.PHONY: proto
+proto:  ## Generate go files from proto.
+	protoc -I=./_proto --go_out=onnx ./_proto/onnx.proto3
+	protoc -I=./_proto --go_out=onnx_ml ./_proto/onnx-ml.proto3
 
 .PHONY: fmt
 fmt: $(SOURCES) ## Formatting source codes.
