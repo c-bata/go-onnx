@@ -1,13 +1,3 @@
-# go-onnx
-
-Golang binding for ONNX-ML.
-
-## Usage
-
-1. Export ONNX-ML IR by using [sklearn-onnx](https://github.com/onnx/sklearn-onnx)
-2. Binds it to Go's struct like following code:
-
-```go
 package main
 
 import (
@@ -30,8 +20,3 @@ func main() {
 
 	fmt.Printf("%#v", p)
 }
-```
-
-## License
-
-MIT License
