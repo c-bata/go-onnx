@@ -1,6 +1,6 @@
 # go-onnx
 
-Golang binding for ONNX-ML.
+Golang binding of ONNX and ONNX-ML.
 
 ## Usage
 
